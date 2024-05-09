@@ -47,9 +47,14 @@ socket.on('init chat', (mensajes) => {
 
 socket.on('chat message', (msg) => {
   const item = document.createElement('li');
+  if(msg.startsWith("https://")){
+    item.innerHTML = `<a href="${msg}"> ${msg0}</a>`;
+    messages.appendChild(item);
+  }else{
   item.textContent = msg;
   messages.appendChild(item);
   window.scrollTo(0, document.body.scrollHeight);
+  }
 });
  
 function setup() {
